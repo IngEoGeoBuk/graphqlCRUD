@@ -8,11 +8,11 @@ import { Users} from './Entities/Users';
 const main = async () => {
     await createConnection({
         type: 'mysql',
-        database: 'GraphqlCRUD',
+        database: 'graphqlcrud',
         username: 'root',
         password: 'qkdgkahr7365',
         logging: true,
-        synchronize: false,
+        synchronize: true,
         entities: [Users],
     });
 
