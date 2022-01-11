@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import { UPDATE_PASSWORD } from '../Graphql/Mutation';
 import { useMutation } from '@apollo/client';
+import { GET_ALL_USERS } from '../Graphql/Queries';
 
 const UpdatePassword = () => {
     const [id, setId] = useState<number>(0);
     const [currentPassword, setCurrentPassword] = useState<string>("");
     const [newPassword, setNewPassword] = useState<string>("");
 
-    const [updatePassword, { error }] = useMutation(UPDATE_PASSWORD)
-
-    if(error) {
-        return <h1> {error} </h1>
-    }
-
+    const [updatePassword, { error }] = useMutation(UPDATE_PASSWORD, {
+        refetchQueries : [
+            { query: GET_ALL_USERS }
+        ]
+    })
+    
     return (
         <div>
             <input 
@@ -32,9 +33,9 @@ const UpdatePassword = () => {
             />
 
             <button
-                onClick={
-                    () => { 
-                        updatePassword({ variables: {
+                onClick={() => { 
+                    updatePassword({ 
+                        variables: {
                             id, oldPassword: currentPassword, newPassword
                         }
                     }) 

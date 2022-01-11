@@ -47,9 +47,10 @@ export const UPDATE_PASSWORD = {
         if (oldPassword === userPassword) {
             // return await Users.update({username: username}, {password: newPassword});
             await Users.update({id: id}, {password: newPassword});
-            return { successful: true, message: "POSSWORD UPDATED" };
+            return { successful: true, message: "PASSWORD UPDATED" };
         } else {
-            throw new Error("PASSWORDS DO NOT MATCH!");
+            return { successful: false, message: "PASSWORDS DO NOT MATCH!" };
+            // throw new Error("PASSWORDS DO NOT MATCH!");
         }
     },     
 }

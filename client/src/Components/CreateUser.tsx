@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../Graphql/Mutation';
+import { GET_ALL_USERS } from '../Graphql/Queries';
 
 const CreateUser = () => {
     const [name, setName] = useState<string>("");
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-  
-    const [createUser, { error }] = useMutation(CREATE_USER); 
+  ;
+    const [createUser, { error }] = useMutation(CREATE_USER, {
+      refetchQueries : [
+        { query: GET_ALL_USERS }
+      ]
+    }); 
 
     return (
         <div className="createUser">
@@ -30,7 +35,7 @@ const CreateUser = () => {
             onClick={() => { 
               createUser({ 
                 variables: { name, username, password },
-              }) 
+              });
             }}
           >
             Create User
