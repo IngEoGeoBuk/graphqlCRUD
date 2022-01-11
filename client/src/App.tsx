@@ -6,6 +6,7 @@ import {
 } from '@apollo/client';
 import CreateUser from './Components/CreateUser';
 import ListOfUsers from './Components/ListOfUsers';
+import UpdatePassword from './Components/UpdatePassword';
 
 const App = () => {
 
@@ -19,6 +20,7 @@ const App = () => {
       <ApolloProvider client={client}>
         <CreateUser />
         <ListOfUsers />
+        <UpdatePassword />
       </ApolloProvider>
     </>
   )
