@@ -1,0 +1,21 @@
+  mutation {
+    createUser(name: "kaka", username: "kaka5678", password: "1111") {
+      name
+      username
+      password
+    }
+  }
+
+  mutation {
+    updatePassword(id: 3, oldPassword: "1111", newPassword: "4444") {
+      successful
+      message
+    }
+  }
+  
+  mutation {
+    deleteUser(id: 2) {
+      successful
+      message
+    }
+  }

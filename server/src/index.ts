@@ -3,7 +3,7 @@ import { graphqlHTTP } from 'express-graphql';
 import { schema } from './Schema'
 import cors from 'cors';
 import { createConnection } from 'typeorm';
-import { Users} from './Entities/Users';
+import { Users } from './Entities/Users';
 
 const main = async () => {
     await createConnection({
@@ -12,7 +12,8 @@ const main = async () => {
         username: 'root',
         password: 'qkdgkahr7365',
         logging: true,
-        synchronize: true,
+        // synchronize: true, 로 하면 테이블 생성 
+        synchronize: false,
         entities: [Users],
     });
 
