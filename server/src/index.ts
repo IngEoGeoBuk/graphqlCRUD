@@ -10,7 +10,7 @@ const main = async () => {
         type: 'mysql',
         database: 'graphqlcrud',
         username: 'root',
-        password: 'qkdgkahr7365',
+        password: 's',
         logging: true,
         // synchronize: true, 로 하면 테이블 생성 
         synchronize: false,
